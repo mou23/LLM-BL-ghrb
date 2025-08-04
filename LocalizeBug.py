@@ -38,8 +38,8 @@ if __name__ == "__main__":
     # xml_report_path = f'ghrb/{project}.xml'
     group = sys.argv[1]
     project = sys.argv[2]
-    gitrepo = f'ghrb/{project}'
-    xml_report_path = f'ghrb/{project}.xml'
+    gitrepo = f'../ghrb/repos/{project}'
+    xml_report_path = f'../ghrb/{project}.xml'
     bugs = get_bug_data(xml_report_path)
     _merge_type = 9
     _report_type = 'all_sen'

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GROUP="Apache"
-GHRB_DIR="ghrb"
+GHRB_DIR="../ghrb"
 TIME_LOG="pipeline_time_log.txt"
 
 # Prepare logs
