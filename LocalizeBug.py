@@ -1,4 +1,7 @@
 import os
+
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 import sys
 import xml.etree.ElementTree as ET
 from CandidateRetrieval import CandidateRetrival
