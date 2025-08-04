@@ -7,6 +7,7 @@
 #SBATCH --mem=128GB
 #SBATCH --partition=standard
 #SBATCH --account=malek_lab
+module load anaconda/2024.06
 
 GROUP="Apache"
 GHRB_DIR="../ghrb"
