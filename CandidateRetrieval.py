@@ -362,6 +362,7 @@ class CandidateRetrival:
         codenames = load_file(self.candidate_name_path)
         filter_list = [] 
         for _,r in reports.iterrows():
+            print(r['id'])
             files = r['files']
             if isinstance(files, str):
                 files = [files]
