@@ -21,7 +21,7 @@ def combmnz(input_file,out_dir,merge_type):
     #         candidate_list[ind] = df.tolist()
     #     except:
     #         candidate_list[ind] = [df]
-    top_k = 20
+    top_k = 50
     candidate_list = {}
     for query_id in df_out['Query'].unique():
         sub_df = df_out[df_out['Query'] == query_id]

@@ -363,6 +363,8 @@ class CandidateRetrival:
         filter_list = [] 
         for _,r in reports.iterrows():
             files = r['files']
+            print(files)
+            print(type(files))
             candidate_file = codenames[str(r["id"])]
             if self.file_type == 'Java':
                 candidate_file = [get_rel_file(i) for i in candidate_file]
