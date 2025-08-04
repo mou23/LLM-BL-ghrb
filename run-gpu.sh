@@ -8,7 +8,7 @@
 #SBATCH --mem=128GB
 #SBATCH --partition=gpu
 #SBATCH --account=malek_lab_gpu
-module load anaconda/2025.0
+module load anaconda/2024.06
 
 GROUP="Apache"
 GHRB_DIR="../ghrb"
