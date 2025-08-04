@@ -359,6 +359,7 @@ class CandidateRetrival:
     
     def generate_filter(self):
         reports = load_file(self.enhanced_report_path)
+        print(len(reports))
         codenames = load_file(self.candidate_name_path)
         filter_list = [] 
         for _,r in reports.iterrows():

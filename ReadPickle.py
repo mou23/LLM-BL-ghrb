@@ -5,17 +5,17 @@
 
 # print(data)
 
-# import pandas as pd
+import pandas as pd
 
-# df = pd.read_pickle('expresults/dubbo/11561/reports.pkl')
+df = pd.read_pickle('expresults/Apktool/3113/reports.pkl')
 
-# df.to_csv('expresults/dubbo/11561/reports.csv', index=False)
+df.to_csv('expresults/Apktool/3113/reports.csv', index=False)
 
 
-import pickle
+# import pickle
 
-with open('expresults/dubbo/11561/candidate.pkl', 'rb') as f:
-    data = pickle.load(f)
+# with open('expresults/dubbo/11561/candidate.pkl', 'rb') as f:
+#     data = pickle.load(f)
 
-for key, value in data.items():
-    print(f"{key}: {value}")
+# for key, value in data.items():
+#     print(f"{key}: {value}")
