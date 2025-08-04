@@ -33,7 +33,8 @@ class Prepare:
 
 
     def prepare_report(self,report):
-        df = pd.DataFrame(report)
+        df = pd.DataFrame([report])
+        # print(df.head())
         df['summary'] = df['summary'].fillna('')
         df['description'] = df['description'].fillna('')
         with mp.Pool(mp.cpu_count()) as pool:

@@ -49,38 +49,38 @@ if __name__ == "__main__":
 
     for bug in bugs:
         conf = Configure(group, project, bug['id'], gitrepo, report_type=_report_type, merge_type=_merge_type)
-        # checkout_suceed = checkout_commit(gitrepo, bug['version'])
-        # if not checkout_suceed:
-        #     sys.exit(1)
-        # print(f"Processing bug {bug['id']} in {project}...")
-        # process = Prepare(conf)
-        # process.prepare_report(bug)
-        # process.prepare_id2version()
-        # process.prepare_version_codes()
-        # process.extract_classname_methodname()
-        # process.get_rel_paths()
-        # process.prepare_report_flag()
+        checkout_suceed = checkout_commit(gitrepo, bug['version'])
+        if not checkout_suceed:
+            sys.exit(1)
+        print(f"Processing bug {bug['id']} in {project}...")
+        process = Prepare(conf)
+        process.prepare_report(bug)
+        process.prepare_id2version()
+        process.prepare_version_codes()
+        process.extract_classname_methodname()
+        process.get_rel_paths()
+        process.prepare_report_flag()
 
-        # print(f"Retrieving candidates...")
+        print(f"Retrieving candidates...")
 
         cand_ret = CandidateRetrival(conf)
-        # cand_ret.enhanced_report()
-        # cand_ret.generate_candidates()
+        cand_ret.enhanced_report()
+        cand_ret.generate_candidates()
         
         print(f"Preparing ranked list...")
         cand_ret.generate_list_df()
         cand_ret.rank_aggregation()
         cand_ret.generate_filter()
 
-        # print(f"Identifying relevant lines...")
-        # if os.path.exists(conf.prompt_path):
-        #     continue
-        # sentence_ret = SentenceRetrieval(conf)
-        # sentence_ret.generate_sen_prompt()
+        print(f"Identifying relevant lines...")
+        if os.path.exists(conf.prompt_path):
+            continue
+        sentence_ret = SentenceRetrieval(conf)
+        sentence_ret.generate_sen_prompt()
 
-        # print(f"Reranking...")
-        # if not os.path.exists(conf.prompt_path):
-        #     print(f"{conf.prompt_path} not exists.")
-        #     continue
-        # reranker = ChatReranker(conf)
-        # reranker.do_inference()
+        print(f"Reranking...")
+        if not os.path.exists(conf.prompt_path):
+            print(f"{conf.prompt_path} not exists.")
+            continue
+        reranker = ChatReranker(conf)
+        reranker.do_inference()
