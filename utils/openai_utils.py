@@ -17,14 +17,14 @@ class OpenaiClient:
                 flag = True
         # print(f"Extracted files: {filtered}, Flag: {flag}")
         return filtered,flag
-
-    def chat(self, file_num, model_name, messages, timeout=3, times=1, temperature=0.2):
+        
+    def chat(self,file_num,model_name,messages,timeout=3,times = 1,**kwargs):
         files = []
         outputs = []
         res = []
         while(times>0):
             try:
-                response = self.client.chat.completions.create(model=model_name, messages=messages, temperature=temperature)
+                response = self.client.chat.completions.create(model=model_name, messages=messages,**kwargs)
                 output = response.choices[0].message.content
                 # print("output",output)
             except Exception as e:
@@ -62,11 +62,11 @@ class OpenaiClient:
             possible_cause = text[cause_start+1:cause_end].strip()
         return summary, possible_cause
     
-    def summarize(self,model_name,messages,timeout=3,times = 1,temperature=0.2):
+    def summarize(self,model_name,messages,timeout=3,times = 1,**kwargs):
         r_summary,possible_cause = "",""
         while(times>0):
             try:
-                response = self.client.chat.completions.create(model=model_name, messages=messages,temperature=temperature)
+                response = self.client.chat.completions.create(model=model_name, messages=messages,**kwargs)
                 output = response.choices[0].message.content
             except Exception as e:
                 print(e)
