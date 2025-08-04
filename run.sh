@@ -1,4 +1,12 @@
 #!/bin/bash
+#SBATCH --job-name=llm-bl-ghrb
+#SBATCH --output=llm-bl-ghrb.log
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=48
+#SBATCH --time=5-00:00:00
+#SBATCH --mem=128GB
+#SBATCH --partition=standard
+#SBATCH --account=malek_lab
 
 GROUP="Apache"
 GHRB_DIR="../ghrb"
