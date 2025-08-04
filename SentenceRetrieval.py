@@ -273,6 +273,7 @@ class SentenceRetrieval:
                 fcontent = [remove_prefix(self.file_type)(i) for i in fcontent]
         report_emb = model.encode(report)
         selected = [selectd_sentence(report_emb,i.splitlines()) for i in fcontent]
+        model.close()
         return selected
         
     def get_sen_prompt(self,r):
