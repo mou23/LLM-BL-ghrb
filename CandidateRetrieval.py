@@ -359,7 +359,7 @@ class CandidateRetrival:
     
     def generate_filter(self):
         reports = load_file(self.enhanced_report_path)
-        print(len(reports))
+        # print(len(reports))
         codenames = load_file(self.candidate_name_path)
         filter_list = [] 
         for _,r in reports.iterrows():
@@ -371,7 +371,7 @@ class CandidateRetrival:
             if self.file_type == 'Java':
                 candidate_file = [get_rel_file(i) for i in candidate_file]
             for f in files:
-                print("f",f)
+                # print("f",f)
                 if f in candidate_file[:self.args.N]:
                     filter_list.append(r["id"])
                     break
