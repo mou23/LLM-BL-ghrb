@@ -1,3 +1,8 @@
+exp-old/
+exp-old2/
 expresults/
 __pycache__/
 api_key.txt
+llm-bl-ghrb.log
+logs/
+pipeline_time_log.txt

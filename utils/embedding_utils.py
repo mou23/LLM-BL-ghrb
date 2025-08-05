@@ -27,7 +27,7 @@ class EmbeddingModel:
     def encode(self, texts):
         if self.device == 'cuda':
             return self.model.encode(
-                texts, batch_size=512, convert_to_numpy=True, show_progress_bar=True
+                texts, batch_size=1024, convert_to_numpy=True, show_progress_bar=True
             )
         else:
             return self.model.encode_multi_process(
