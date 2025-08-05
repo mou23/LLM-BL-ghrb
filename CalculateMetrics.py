@@ -148,6 +148,6 @@ for project_name in os.listdir(base_dir):
         bug_data.append(bug_data_entry)
 
         
-        calculate_accuracy_at_k(bug_data)
-        calculate_mean_reciprocal_rank_at_k(bug_data)
-        calculate_mean_average_precision_at_k(bug_data)
+calculate_accuracy_at_k(bug_data)
+calculate_mean_reciprocal_rank_at_k(bug_data)
+calculate_mean_average_precision_at_k(bug_data)
