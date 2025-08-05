@@ -48,7 +48,7 @@ def calculate_mean_reciprocal_rank_at_k(bug_data):
         if inverse_rank == 0:
             print("MRR@", top, 0)
         else:
-            print("MRR@", top, (1/total_bug)*inverse_rank)
+            print("MRR@", top, (1/total_bug)*inverse_rank, total_bug)
            
      
 def calculate_mean_average_precision_at_k(bug_data):
@@ -56,12 +56,15 @@ def calculate_mean_average_precision_at_k(bug_data):
         total_bug = 0
         total_average_precision = 0
         for bug in bug_data:
+            total_bug = total_bug + 1
             average_precision = 0
             precision = 0
             suspicious_files = bug['suspicious_files']
             length_of_suspicious_files = len(suspicious_files)
             fixed_files = bug['fixed_files']
 
+            if not fixed_files:
+                continue
             # fixed_files = bug['fixed_files'].split('.java')
             # fixed_files = [(file + '.java').strip() for file in fixed_files[:-1]]
             number_of_relevant_files = 0
@@ -76,9 +79,9 @@ def calculate_mean_average_precision_at_k(bug_data):
             average_precision = precision/len(fixed_files)
             # print("average_precision" ,average_precision, len(fixed_files))
             total_average_precision = total_average_precision + average_precision
-            total_bug = total_bug + 1
+            
         mean_average_precision = total_average_precision/total_bug
-        print("MAP@", top, mean_average_precision)
+        print("MAP@", top, mean_average_precision, total_bug)
 
 
 base_dir = "expresults"
