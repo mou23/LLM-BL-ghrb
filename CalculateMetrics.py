@@ -105,15 +105,24 @@ for project_name in os.listdir(base_dir):
         
         if not prompts_file:
             print(f"No prompts.json found for {project_name}/{bug_id}")
+            bug_data.append({
+                'bug_id': f"{project_name}-{bug_id}",
+                'fixed_files': [],
+                'suspicious_files': []
+            })
             continue
         
-        # Load prompt data
         with open(prompts_file, 'r') as f:
             prompt_data = json.load(f)
         
         bug_entry = prompt_data.get(bug_id)
         if not bug_entry:
             print(f"No entry for bug_id {bug_id} in prompts.json")
+            bug_data.append({
+                'bug_id': f"{project_name}-{bug_id}",
+                'fixed_files': [],
+                'suspicious_files': []
+            })
             continue
         
         file_names = bug_entry.get("names", [])
@@ -131,8 +140,13 @@ for project_name in os.listdir(base_dir):
         
         if not llm_file_path:
             print(f"No LLM file found for {project_name}/{bug_id}")
+            bug_data.append({
+                'bug_id': f"{project_name}-{bug_id}",
+                'fixed_files': [],
+                'suspicious_files': []
+            })
             continue
-        
+
         with open(llm_file_path, 'r') as f:
             llm_data = json.load(f)
             llm_indices = llm_data[0]  # e.g., [3, 4, 1, 0, ...]
@@ -144,10 +158,10 @@ for project_name in os.listdir(base_dir):
             'fixed_files': fixed_files,
             'suspicious_files': suspicious_files
         }
-        print(bug_data_entry)
+        # print(bug_data_entry)
         bug_data.append(bug_data_entry)
 
-        
+
 calculate_accuracy_at_k(bug_data)
 calculate_mean_reciprocal_rank_at_k(bug_data)
 calculate_mean_average_precision_at_k(bug_data)
